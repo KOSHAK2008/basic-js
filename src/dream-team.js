@@ -14,7 +14,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function createDreamTeam(members) {
-  if (members.length === 0 || typeof (members) !== Function) throw new NotImplementedError('Not implemented');
+  if (members == null) {
+    return false;
+  } if (members.length === 0) throw new NotImplementedError('Not implemented');
   let latterMemberTeam = [];
   for (let i = 0; i < members.length; i++) {
     if (typeof (members[i]) == 'string') {
