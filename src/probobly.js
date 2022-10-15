@@ -1,34 +1,25 @@
-// function createDreamTeam(members) {
-//     if (members.length === 0) throw new NotImplementedError('Not implemented');
-//     let latterMemberTeam = [];
-//     for (let i = 0; i < members.length; i++) {
-//         if (typeof (members[i]) == 'string') {
-//             let nameMemberTeam = members[i].trim();
-//             latterMemberTeam.push(nameMemberTeam[0].toUpperCase());
-//         }
-//         latterMemberTeam.sort();
-//     }
-//     let nameTeam = '';
-//     for (let j = 0; j < latterMemberTeam.length; j++) {
-//         nameTeam += latterMemberTeam[j];
-//     }
-//     console.log(nameTeam);
-//     return nameTeam;
+function getSeason(date = 'no-value') {
+    if (date == 'no-value') return 'Unable to determine the time of year!';
 
-// };
+    if (date instanceof Date) {
+        if (Object.prototype.toString.call(date) !== '[object Date]') throw new Error('Invalid date!');
 
-// createDreamTeam([
-//     ['David Abram'],
-//     ['Robin Attfield'],
-//     'Thomas Berry',
-//     ['Paul R.Ehrlich'],
-//     'donna Haraway',
-//     ' BrIaN_gOodWiN  ',
-//     {
-//         0: 'Serenella Iovino'
-//     },
-//     'Erazim Kohak',
-//     '  val_plumwood',
-// ])
+        const month = date.getMonth();
+        if ((month <= 12 && month >= 11) || (month == 1)) {
+            return 'winter';
+        } if (month <= 4 && month >= 2) {
+            return 'spring';
+        } if (month <= 5 && month >= 8) {
+            return 'summer';
+        } if (month <= 9 && month >= 10) {
+            return 'autumn';
+        }
+    }
+    throw new Error('Invalid date!');
+}
 
-//   // 'BDETV';
+getSeason(new Date(2018, 4, 17, 11, 27, 4, 321),);
+
+console.log(new Date(2018, 4, 17, 11, 27, 4, 321),);
+
+  //'summer'
