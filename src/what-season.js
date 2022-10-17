@@ -40,7 +40,8 @@ function getSeason(date = 'no-value') {
         return 'autumn';
     }
   }
-  throw new Error('Invalid date!');
+
+  throw Error('Invalid date!');
 }
 
 module.exports = {

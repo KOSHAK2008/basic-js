@@ -1,25 +1,21 @@
-function getSeason(date = 'no-value') {
-    if (date == 'no-value') return 'Unable to determine the time of year!';
+const MODERN_ACTIVITY = 15;
+const HALF_LIFE_PERIOD = 5730;
 
-    if (date instanceof Date) {
-        if (Object.prototype.toString.call(date) !== '[object Date]') throw new Error('Invalid date!');
+function dateSample(sampleActivity) {
+    if (typeof (sampleActivity) === 'string') {
+        let yearLive = parseFloat(sampleActivity);
 
-        const month = date.getMonth();
-        if ((month <= 12 && month >= 11) || (month == 1)) {
-            return 'winter';
-        } if (month <= 4 && month >= 2) {
-            return 'spring';
-        } if (month <= 5 && month >= 8) {
-            return 'summer';
-        } if (month <= 9 && month >= 10) {
-            return 'autumn';
-        }
+        if (yearLive <= 15 && yearLive > 0) {
+            if (isNaN(yearLive)) {
+                return false;
+            } return Math.ceil(Math.log(MODERN_ACTIVITY / yearLive) / (Math.log(2) / HALF_LIFE_PERIOD));
+        } return false
     }
-    throw new Error('Invalid date!');
+    return false
 }
 
-getSeason(new Date(2018, 4, 17, 11, 27, 4, 321),);
+dateSample('9000');
 
-console.log(new Date(2018, 4, 17, 11, 27, 4, 321),);
+// 13308);
 
-  //'summer'
+console.log(dateSample('9000'));
