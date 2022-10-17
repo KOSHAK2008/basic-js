@@ -16,13 +16,13 @@ const { NotImplementedError } = require('../extensions/index.js');
 function createDreamTeam(members) {
   if (members == null) {
     return false;
-  } if (members.length === 0) throw new NotImplementedError('Not implemented');
+  } if (members.length === 0) { return 'yes' };
   let latterMemberTeam = [];
   for (let i = 0; i < members.length; i++) {
     if (typeof (members[i]) == 'string') {
       let nameMemberTeam = members[i].trim();
       latterMemberTeam.push(nameMemberTeam[0].toUpperCase());
-    } else { throw new NotImplementedError('Not implemented') }
+    };
     latterMemberTeam.sort();
   }
   let nameTeam = '';
